@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Socket.io Chat App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Chat App</h1>
+  <div>
+    <label for="room">Room:</label>
+    <input type="text" id="room" placeholder="Enter room name">
+    <button id="joinButton">Join Room</button>
+  </div>
+  <div>
+    <h2>Users in Room:</h2>
+    <ul id="userList"></ul>
+  </div>
+  <div>
+    <h2>Chat:</h2>
+    <ul id="chatMessages"></ul>
+    <input type="text" id="message" placeholder="Enter your message">
+    <button id="sendButton">Send</button>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    const userList = document.getElementById('userList');
+    const chatMessages = document.getElementById('chatMessages');
+    const joinButton = document.getElementById('joinButton');
+    const sendButton = document.getElementById('sendButton');
+    const roomInput = document.getElementById('room');
+    const messageInput = document.getElementById('message');
+
+    let currentRoom = '';
+
+    joinButton.addEventListener('click', () => {
+      const room = roomInput.value;
+      if (room) {
+        socket.emit('joinRoom', room);
+        currentRoom = room;
+        userList.innerHTML = '';
+      }
+    });
+
+    sendButton.addEventListener('click', () => {
+      const message = messageInput.value;
+      if (message && currentRoom) {
+        socket.emit('sendMessage', { room: currentRoom, message });
+        messageInput.value = '';
+      }
+    });
+
+    socket.on('userList', (users) => {
+      userList.innerHTML = '';
+      users.forEach((user) => {
+        const userItem = document.createElement('li');
+        userItem.textContent = user;
+        userList.appendChild(userItem);
+      });
+    });
+
+    socket.on('message', (data) => {
+      const messageItem = document.createElement('li');
+      messageItem.textContent = `${data.user}: ${data.message}`;
+      chatMessages.appendChild(messageItem);
+    });
+  </script>
+</body>
+</html>
+
