@@ -5,9 +5,9 @@ Certainly! Here's an example of a README file for the chat app we created using 
 
 ---
 
-# Chat App with Pastel Color Theme
+# Chat App
 
-This is a simple chat application built using Node.js and Socket.io. It allows users to join chat rooms and exchange real-time messages in a pastel color-themed interface.
+This is a simple chat application built using Node.js and Socket.io. It allows users to join chat rooms and exchange real-time messages in a color-themed interface.
 
 ## Features
 
@@ -65,6 +65,8 @@ This is a simple chat application built using Node.js and Socket.io. It allows u
 ## Screenshots
 
 ![Chat App Screenshot](public/Img-1.png)
+
+![Chat App Screenshot](public/Img-2.png)
 
 
 ## License
