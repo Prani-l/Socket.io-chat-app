@@ -13,8 +13,7 @@ This is a simple chat application built using Node.js and Socket.io. It allows u
 
 - Join different chat rooms.
 - Real-time messaging with other users in the same room.
-- Display of active users in the room.
-- Pastel color theme for a visually pleasing experience.
+- Display of active users in the room with Unique id.
 
 ## Technologies Used
 
@@ -39,7 +38,7 @@ This is a simple chat application built using Node.js and Socket.io. It allows u
 2. Navigate to the project directory:
 
    ```bash
-   cd chat-app
+   cd Folder
    ```
 
 3. Install the dependencies:
@@ -65,7 +64,8 @@ This is a simple chat application built using Node.js and Socket.io. It allows u
 
 ## Screenshots
 
-![Chat App Screenshot](screenshots/screenshot.png)
+![Chat App Screenshot](public/Img-1.png)
+
 
 ## License
 
